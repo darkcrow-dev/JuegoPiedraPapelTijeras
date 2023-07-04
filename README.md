@@ -5,7 +5,7 @@ Al iniciar el programa la aplicación muestra una imagen de pantalla de inicio, 
 
 Pantalla de inicio
 
-![app0](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/f62508e7-205f-4c93-8019-88fa4d837443)
+![app0](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/8368fbfb-a7fa-452f-bc67-c8d8742c2e96)
 
 Menu
 
