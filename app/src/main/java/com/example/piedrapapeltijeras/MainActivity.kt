@@ -149,9 +149,9 @@ class MainActivity : AppCompatActivity() {
     private fun declararGanador(string: String){
         val dialogo = Dialog(this)
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialogo.setCancelable(true)
+        dialogo.setCancelable(false)
         dialogo.setCanceledOnTouchOutside(false)
-        dialogo.setContentView(R.layout.custom_dialog)
+        dialogo.setContentView(R.layout.winner_dialog)
         dialogo.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         val botonAfirmativo: Button = dialogo.findViewById(R.id.botonAfirmativo)
