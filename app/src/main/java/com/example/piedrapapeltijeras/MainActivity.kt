@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private var arrayOpcionesMaquina = arrayOf(R.drawable.paper, R.drawable.rock, R.drawable.scissors)
     private var arrayGanador = arrayOf("MAQUINA GANA", "EMPATE", "JUGADOR GANA", "JUEGO TERMINADO")
+    private var opcionesMaquina = 0
 
     private var puntajeHumano = 0
     private var puntajeMaquina = 0
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         botonPiedra.setOnClickListener {
             if(jugar){
-                val opcionesMaquina = Random.nextInt(0..2)
+                opcionesMaquina = Random.nextInt(0..2)
                 imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
                 imagenHumano.setImageResource(R.drawable.rock)
 
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         botonPapel.setOnClickListener {
             if(jugar){
-                val opcionesMaquina = Random.nextInt(0..2)
+                opcionesMaquina = Random.nextInt(0..2)
                 imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
                 imagenHumano.setImageResource(R.drawable.paper)
 
@@ -113,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
         botonTijeras.setOnClickListener {
             if(jugar){
-                val opcionesMaquina = Random.nextInt(0..2)
+                opcionesMaquina = Random.nextInt(0..2)
                 imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
                 imagenHumano.setImageResource(R.drawable.scissors)
 
