@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ganadorTexto: TextView
 
     private var arrayOpcionesMaquina = arrayOf(R.drawable.paper, R.drawable.rock, R.drawable.scissors)
-    private var arrayGanador = arrayOf("MAQUINA GANA", "EMPATE", "JUGADOR GANA")
-    private var opcionesMaquina = 0
+    private var arrayGanador = arrayOf("MAQUINA GANA", "EMPATE", "JUGADOR GANA", "JUEGO TERMINADO")
 
     private var puntajeHumano = 0
     private var puntajeMaquina = 0
+    private var jugar = false
 
     private lateinit var texto: String
 
@@ -50,90 +50,96 @@ class MainActivity : AppCompatActivity() {
         inicializar()
 
         botonPiedra.setOnClickListener {
-            opcionesMaquina = Random.nextInt(0..2)
-            imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-            imagenHumano.setImageResource(R.drawable.rock)
+            if(jugar){
+                val opcionesMaquina = Random.nextInt(0..2)
+                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
+                imagenHumano.setImageResource(R.drawable.rock)
 
-            imagenHumano.visibility = View.VISIBLE
-            imagenMaquina.visibility = View.VISIBLE
+                imagenHumano.visibility = View.VISIBLE
+                imagenMaquina.visibility = View.VISIBLE
 
-            when(opcionesMaquina){
-                0 -> {
-                    ganadorTexto.text = arrayGanador[0]
-                    puntajeMaquina += 1
-                    texto = "MAQUINA: $puntajeMaquina"
-                    pantallaPuntajeMaquina.text = texto
+                when(opcionesMaquina){
+                    0 -> {
+                        ganadorTexto.text = arrayGanador[0]
+                        puntajeMaquina += 1
+                        texto = "MAQUINA: $puntajeMaquina"
+                        pantallaPuntajeMaquina.text = texto
+                    }
+                    1 -> {
+                        ganadorTexto.text = arrayGanador[1]
+                    }
+                    2 -> {
+                        ganadorTexto.text = arrayGanador[2]
+                        puntajeHumano += 1
+                        texto = "JUGADOR: $puntajeHumano"
+                        pantallaPuntajeHumano.text = texto
+                    }
                 }
-                1 -> {
-                    ganadorTexto.text = arrayGanador[1]
-                }
-                2 -> {
-                    ganadorTexto.text = arrayGanador[2]
-                    puntajeHumano += 1
-                    texto = "JUGADOR: $puntajeHumano"
-                    pantallaPuntajeHumano.text = texto
-                }
+
+                revisarGanador(puntajeHumano, puntajeMaquina)
             }
-
-            revisarGanador(puntajeHumano, puntajeMaquina)
         }
 
         botonPapel.setOnClickListener {
-            opcionesMaquina = Random.nextInt(0..2)
-            imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-            imagenHumano.setImageResource(R.drawable.paper)
+            if(jugar){
+                val opcionesMaquina = Random.nextInt(0..2)
+                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
+                imagenHumano.setImageResource(R.drawable.paper)
 
-            imagenHumano.visibility = View.VISIBLE
-            imagenMaquina.visibility = View.VISIBLE
+                imagenHumano.visibility = View.VISIBLE
+                imagenMaquina.visibility = View.VISIBLE
 
-            when (opcionesMaquina){
-                0 -> {
-                    ganadorTexto.text = arrayGanador[1]
+                when (opcionesMaquina){
+                    0 -> {
+                        ganadorTexto.text = arrayGanador[1]
+                    }
+                    1 -> {
+                        ganadorTexto.text = arrayGanador[2]
+                        puntajeHumano += 1
+                        texto = "JUGADOR: $puntajeHumano"
+                        pantallaPuntajeHumano.text = texto
+                    }
+                    2 -> {
+                        ganadorTexto.text = arrayGanador[0]
+                        puntajeMaquina += 1
+                        texto = "MAQUINA: $puntajeMaquina"
+                        pantallaPuntajeMaquina.text = texto
+                    }
                 }
-                1 -> {
-                    ganadorTexto.text = arrayGanador[2]
-                    puntajeHumano += 1
-                    texto = "JUGADOR: $puntajeHumano"
-                    pantallaPuntajeHumano.text = texto
-                }
-                2 -> {
-                    ganadorTexto.text = arrayGanador[0]
-                    puntajeMaquina += 1
-                    texto = "MAQUINA: $puntajeMaquina"
-                    pantallaPuntajeMaquina.text = texto
-                }
+
+                revisarGanador(puntajeHumano, puntajeMaquina)
             }
-
-            revisarGanador(puntajeHumano, puntajeMaquina)
         }
 
         botonTijeras.setOnClickListener {
-            opcionesMaquina = Random.nextInt(0..2)
-            imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-            imagenHumano.setImageResource(R.drawable.scissors)
+            if(jugar){
+                val opcionesMaquina = Random.nextInt(0..2)
+                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
+                imagenHumano.setImageResource(R.drawable.scissors)
 
-            imagenHumano.visibility = View.VISIBLE
-            imagenMaquina.visibility = View.VISIBLE
+                imagenHumano.visibility = View.VISIBLE
+                imagenMaquina.visibility = View.VISIBLE
 
-            when (opcionesMaquina){
-                0 -> {
-                    ganadorTexto.text = arrayGanador[2]
-                    puntajeHumano += 1
-                    texto = "JUGADOR: $puntajeHumano"
-                    pantallaPuntajeHumano.text = texto
+                when (opcionesMaquina){
+                    0 -> {
+                        ganadorTexto.text = arrayGanador[2]
+                        puntajeHumano += 1
+                        texto = "JUGADOR: $puntajeHumano"
+                        pantallaPuntajeHumano.text = texto
+                    }
+                    1 -> {
+                        ganadorTexto.text = arrayGanador[0]
+                        puntajeMaquina += 1
+                        texto = "MAQUINA: $puntajeMaquina"
+                        pantallaPuntajeMaquina.text = texto
+                    }
+                    2 -> {
+                        ganadorTexto.text = arrayGanador[1]
+                    }
                 }
-                1 -> {
-                    ganadorTexto.text = arrayGanador[0]
-                    puntajeMaquina += 1
-                    texto = "MAQUINA: $puntajeMaquina"
-                    pantallaPuntajeMaquina.text = texto
-                }
-                2 -> {
-                    ganadorTexto.text = arrayGanador[1]
-                }
+
+                revisarGanador(puntajeHumano, puntajeMaquina)
             }
-
-            revisarGanador(puntajeHumano, puntajeMaquina)
         }
     }
 
@@ -161,13 +167,13 @@ class MainActivity : AppCompatActivity() {
         mensajeGanador.text = string
 
         botonAfirmativo.setOnClickListener {
-            puntajeHumano = 0
-            puntajeMaquina = 0
             inicializar()
             dialogo.dismiss()
         }
 
         botonNegativo.setOnClickListener {
+            jugar = false
+            ganadorTexto.text = arrayGanador[3]
             dialogo.dismiss()
         }
 
@@ -175,6 +181,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun inicializar(){
+        jugar = true
+        puntajeHumano = 0
+        puntajeMaquina = 0
+
         texto = "JUGADOR: $puntajeHumano"
         pantallaPuntajeHumano.text = texto
 
