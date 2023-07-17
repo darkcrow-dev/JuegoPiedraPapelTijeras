@@ -1,4 +1,4 @@
-# JuegoPiedraPapelTijeras
+# Juego-PiedraPapelTijeras
 
 Juego de piedra, papel o tijeras donde el usuario se enfrentará contra la máquina y el que logre conseguir 5 puntos de victoria será el ganador del juego.
 Al iniciar el programa la aplicación muestra una imagen de pantalla de inicio, posteriormente entra a un menu donde se encuentran las imagenes del juego de piedra, papel y tijeras y 2 botones, el primer boton sirve para entrar al juego y el segundo para obtener información acerca de la aplicación. Cuando se presiona el botón para jugar, la aplicación muestra los puntajes iniciales y 3 botones de opciones para que el usuario elija. Cuando cualquiera de los 2 llegue a 5 puntos, se mostrará un pequeño aviso para que el usuario pueda elegir entre volver a jugar o no, si elige que no, entonces el juego termina, si elige que si, se resetea el puntaje.
