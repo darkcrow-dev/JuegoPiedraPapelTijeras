@@ -10,7 +10,10 @@ Al iniciar el programa la aplicación muestra una imagen de pantalla de inicio, 
 
 ![app0](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/8368fbfb-a7fa-452f-bc67-c8d8742c2e96)
 
-Menu
+<p>
+  <br>Menú de la aplicación
+  <br>Iconos de la pantalla de inicio del juego Piedra, papel y tijeras realizado por <b>Lorc</b> de https://game-icons.net/
+</p>
 
 ![app1](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/5db9c93e-2af6-4554-9934-bcf9a2823392)
 
@@ -18,15 +21,24 @@ Inicio del juego
 
 ![app2](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/f3642e13-641a-4ad6-8e90-719bda52bc04)
 
-Usuario juega
+<p>
+  <br>Usuario juega
+  <br>Iconos del juego Piedra, papel y tijeras realizado por <b>Lorc</b> de https://game-icons.net/
+</p>
 
 ![app3](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/b7430506-e286-4a4f-8c7e-56f45f836149)
 
-Usuario gana
+<p>
+  <br>Usuario gana
+  <br>Iconos del juego Piedra, papel y tijeras realizado por <b>Lorc</b> de https://game-icons.net/
+</p>
 
 ![app4](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/c1d3e294-dde1-42dc-bd62-937a52cd4ff8)
 
-Si usuario elige no volver a jugar
+<p>
+  <br>Si usuario elige no volver a jugar
+  <br>Iconos del juego Piedra, papel y tijeras realizado por <b>Lorc</b> de https://game-icons.net/
+</p>
 
 ![app5](https://github.com/darkcrow-dev/JuegoPiedraPapelTijeras/assets/108247794/e0095532-864c-4ac3-b610-965c269e3bfd)
 
