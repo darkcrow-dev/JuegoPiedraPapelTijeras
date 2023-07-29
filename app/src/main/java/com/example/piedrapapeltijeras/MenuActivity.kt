@@ -10,7 +10,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 
-class Menu : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
     private lateinit var botonJugar: Button
     private lateinit var botonInformacion: Button
 
