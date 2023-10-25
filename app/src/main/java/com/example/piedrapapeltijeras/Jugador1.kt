@@ -45,6 +45,7 @@ class Jugador1(private var imagenesFichas: Array<Int>, private var turnoFicha: A
 
         val texto = "${jugadoresJuegoTexto[contador]}: ${textoPuntajes[contador]}"
         puntajeJugadores[contador].text = texto
+        inicializarJuego(contador + 1)
     }
 
     override fun terminarJuego() {
