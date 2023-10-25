@@ -53,6 +53,5 @@ class Jugador1(private var imagenesFichas: Array<Int>, private var turnoFicha: A
         val texto = "JUEGO TERMINADO"
         ganadorTexto.text = texto
         Jugadores.setTurno(false)
-        Jugadores.setJugar(false)
     }
 }

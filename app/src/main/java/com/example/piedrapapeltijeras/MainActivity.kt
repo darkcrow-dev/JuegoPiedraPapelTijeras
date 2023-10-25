@@ -41,8 +41,9 @@ class MainActivity : AppCompatActivity() {
         val jugador2 = Maquina(imagenesFichas, imagenesJugadores, puntajeJugadores, ganadorTexto, this)
 
         val jugadores = arrayOf(jugador1, jugador2)
-        Jugadores.setJugadoresJuego(arrayOf("JUGADOR", "MAQUINA"))
         Jugadores.setJugadores(jugadores)
+        Jugadores.setJugadoresJuego(arrayOf("JUGADOR", "MAQUINA"))
+        Jugadores.setJugar(false)
 
         var bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
         jugadores[bandera].inicializarJuego(0)
