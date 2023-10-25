@@ -1,10 +1,12 @@
 package com.example.piedrapapeltijeras
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 
 class MainActivity : AppCompatActivity() {
     private lateinit var imagenJugador1: ImageView
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         botonPapel = findViewById(R.id.botonPapel)
         botonTijeras = findViewById(R.id.botonTijeras)
 
-        val imagenesFichas = arrayOf(R.drawable.paper, R.drawable.rock, R.drawable.scissors)
+        val imagenesFichas = arrayOf(R.drawable.rock, R.drawable.paper, R.drawable.scissors)
         val imagenesJugadores = arrayOf(imagenJugador1, imagenJugador2)
         val puntajeJugadores = arrayOf(puntajeJugador1, puntajeJugador2)
 
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val jugador2 = Maquina(imagenesFichas, imagenesJugadores, puntajeJugadores, ganadorTexto, this)
 
         val jugadores = arrayOf(jugador1, jugador2)
-        Jugadores.setJugadoresJuego(arrayOf("JUGADOR 1", "MÁQUINA"))
+        Jugadores.setJugadoresJuego(arrayOf("JUGADOR", "MAQUINA"))
         Jugadores.setJugadores(jugadores)
 
         var bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
@@ -65,5 +67,13 @@ class MainActivity : AppCompatActivity() {
                 jugadores[bandera].movimientoJugador("2")
             }
         }
+
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                startActivity(Intent(this@MainActivity, MenuActivity::class.java))
+                finish()
+            }
+
+        })
     }
 }

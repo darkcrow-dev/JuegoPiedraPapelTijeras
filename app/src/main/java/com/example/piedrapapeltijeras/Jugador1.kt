@@ -31,6 +31,7 @@ class Jugador1(private var imagenesFichas: Array<Int>, private var turnoFicha: A
 
     override fun inicializarJuego(contador: Int) {
         if(contador > 1){
+            Jugadores.setTurno(false)
             Jugadores.setJugar(true)
             Jugadores.setTurnoMaquina(false)
             ganadorTexto.text = ""
@@ -51,6 +52,7 @@ class Jugador1(private var imagenesFichas: Array<Int>, private var turnoFicha: A
     override fun terminarJuego() {
         val texto = "JUEGO TERMINADO"
         ganadorTexto.text = texto
+        Jugadores.setTurno(false)
         Jugadores.setJugar(false)
     }
 }
