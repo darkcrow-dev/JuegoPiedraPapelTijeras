@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/pantallaPuntajeMaquina"
+        android:id="@+id/pantallaPuntajeJugador2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2"></TextView>
 
     <TextView
-        android:id="@+id/pantallaPuntajeHumano"
+        android:id="@+id/pantallaPuntajeJugador1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3"></TextView>
 
     <Button
-        android:id="@+id/piedraBoton"
+        android:id="@+id/botonPiedra"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="PIEDRA"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline11"></Button>
 
     <Button
-        android:id="@+id/papelBoton"
+        android:id="@+id/botonPapel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="PAPEL"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline11"></Button>
 
     <Button
-        android:id="@+id/tijerasBoton"
+        android:id="@+id/botonTijeras"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="TIJERAS"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline11"></Button>
 
     <ImageView
-        android:id="@+id/imagenHumano"
+        android:id="@+id/imagenJugador1"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:src="@drawable/scissors"
@@ -76,10 +76,10 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/ganador"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/ganadorTexto"></ImageView>
 
     <ImageView
-        android:id="@+id/imagenMaquina"
+        android:id="@+id/imagenJugador2"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:src="@drawable/paper"
@@ -87,10 +87,10 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/pantallaPuntajeMaquina"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/pantallaPuntajeJugador2"></ImageView>
 
     <TextView
-        android:id="@+id/ganador"
+        android:id="@+id/ganadorTexto"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -100,7 +100,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline7"></TextView>
 

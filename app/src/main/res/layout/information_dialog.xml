@@ -26,9 +26,9 @@
         </TextView>
 
         <TextView
+            android:id="@+id/textoInformacion"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:id="@+id/textoInformacion"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:text=""

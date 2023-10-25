@@ -1,200 +1,69 @@
 package com.example.piedrapapeltijeras
 
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var imagenHumano: ImageView
-    private lateinit var imagenMaquina: ImageView
+    private lateinit var imagenJugador1: ImageView
+    private lateinit var imagenJugador2: ImageView
+    private lateinit var puntajeJugador1: TextView
+    private lateinit var puntajeJugador2: TextView
+    private lateinit var ganadorTexto: TextView
+
     private lateinit var botonPiedra: Button
     private lateinit var botonPapel: Button
     private lateinit var botonTijeras: Button
-    private lateinit var pantallaPuntajeHumano: TextView
-    private lateinit var pantallaPuntajeMaquina: TextView
-    private lateinit var ganadorTexto: TextView
-
-    private var arrayOpcionesMaquina = arrayOf(R.drawable.paper, R.drawable.rock, R.drawable.scissors)
-    private var arrayGanador = arrayOf("MAQUINA GANA", "EMPATE", "JUGADOR GANA", "JUEGO TERMINADO")
-    private var opcionesMaquina = 0
-
-    private var puntajeHumano = 0
-    private var puntajeMaquina = 0
-    private var jugar = false
-
-    private lateinit var texto: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        imagenHumano = findViewById(R.id.imagenHumano)
-        imagenMaquina = findViewById(R.id.imagenMaquina)
+        imagenJugador1 = findViewById(R.id.imagenJugador1)
+        imagenJugador2 = findViewById(R.id.imagenJugador2)
+        puntajeJugador1 = findViewById(R.id.pantallaPuntajeJugador1)
+        puntajeJugador2 = findViewById(R.id.pantallaPuntajeJugador2)
+        ganadorTexto = findViewById(R.id.ganadorTexto)
 
-        botonPiedra = findViewById(R.id.piedraBoton)
-        botonPapel = findViewById(R.id.papelBoton)
-        botonTijeras = findViewById(R.id.tijerasBoton)
+        botonPiedra = findViewById(R.id.botonPiedra)
+        botonPapel = findViewById(R.id.botonPapel)
+        botonTijeras = findViewById(R.id.botonTijeras)
 
-        pantallaPuntajeHumano = findViewById(R.id.pantallaPuntajeHumano)
-        pantallaPuntajeMaquina = findViewById(R.id.pantallaPuntajeMaquina)
-        ganadorTexto = findViewById(R.id.ganador)
+        val imagenesFichas = arrayOf(R.drawable.paper, R.drawable.rock, R.drawable.scissors)
+        val imagenesJugadores = arrayOf(imagenJugador1, imagenJugador2)
+        val puntajeJugadores = arrayOf(puntajeJugador1, puntajeJugador2)
 
-        inicializar()
+        val jugador1 = Jugador1(imagenesFichas, imagenesJugadores, puntajeJugadores, ganadorTexto)
+        val jugador2 = Maquina(imagenesFichas, imagenesJugadores, puntajeJugadores, ganadorTexto, this)
+
+        val jugadores = arrayOf(jugador1, jugador2)
+        Jugadores.setJugadoresJuego(arrayOf("JUGADOR 1", "MÁQUINA"))
+        Jugadores.setJugadores(jugadores)
+
+        var bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
+        jugadores[bandera].inicializarJuego(0)
 
         botonPiedra.setOnClickListener {
-            if(jugar){
-                opcionesMaquina = Random.nextInt(0..2)
-                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-                imagenHumano.setImageResource(R.drawable.rock)
-
-                imagenHumano.visibility = View.VISIBLE
-                imagenMaquina.visibility = View.VISIBLE
-
-                when(opcionesMaquina){
-                    0 -> {
-                        ganadorTexto.text = arrayGanador[0]
-                        puntajeMaquina += 1
-                        texto = "MAQUINA: $puntajeMaquina"
-                        pantallaPuntajeMaquina.text = texto
-                    }
-                    1 -> {
-                        ganadorTexto.text = arrayGanador[1]
-                    }
-                    2 -> {
-                        ganadorTexto.text = arrayGanador[2]
-                        puntajeHumano += 1
-                        texto = "JUGADOR: $puntajeHumano"
-                        pantallaPuntajeHumano.text = texto
-                    }
-                }
-
-                revisarGanador(puntajeHumano, puntajeMaquina)
+            if(Jugadores.getJugar() && !Jugadores.getTurnoMaquina()){
+                bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
+                jugadores[bandera].movimientoJugador("0")
             }
         }
 
         botonPapel.setOnClickListener {
-            if(jugar){
-                opcionesMaquina = Random.nextInt(0..2)
-                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-                imagenHumano.setImageResource(R.drawable.paper)
-
-                imagenHumano.visibility = View.VISIBLE
-                imagenMaquina.visibility = View.VISIBLE
-
-                when (opcionesMaquina){
-                    0 -> {
-                        ganadorTexto.text = arrayGanador[1]
-                    }
-                    1 -> {
-                        ganadorTexto.text = arrayGanador[2]
-                        puntajeHumano += 1
-                        texto = "JUGADOR: $puntajeHumano"
-                        pantallaPuntajeHumano.text = texto
-                    }
-                    2 -> {
-                        ganadorTexto.text = arrayGanador[0]
-                        puntajeMaquina += 1
-                        texto = "MAQUINA: $puntajeMaquina"
-                        pantallaPuntajeMaquina.text = texto
-                    }
-                }
-
-                revisarGanador(puntajeHumano, puntajeMaquina)
+            if(Jugadores.getJugar() && !Jugadores.getTurnoMaquina()){
+                bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
+                jugadores[bandera].movimientoJugador("1")
             }
         }
 
         botonTijeras.setOnClickListener {
-            if(jugar){
-                opcionesMaquina = Random.nextInt(0..2)
-                imagenMaquina.setImageResource(arrayOpcionesMaquina[opcionesMaquina])
-                imagenHumano.setImageResource(R.drawable.scissors)
-
-                imagenHumano.visibility = View.VISIBLE
-                imagenMaquina.visibility = View.VISIBLE
-
-                when (opcionesMaquina){
-                    0 -> {
-                        ganadorTexto.text = arrayGanador[2]
-                        puntajeHumano += 1
-                        texto = "JUGADOR: $puntajeHumano"
-                        pantallaPuntajeHumano.text = texto
-                    }
-                    1 -> {
-                        ganadorTexto.text = arrayGanador[0]
-                        puntajeMaquina += 1
-                        texto = "MAQUINA: $puntajeMaquina"
-                        pantallaPuntajeMaquina.text = texto
-                    }
-                    2 -> {
-                        ganadorTexto.text = arrayGanador[1]
-                    }
-                }
-
-                revisarGanador(puntajeHumano, puntajeMaquina)
+            if(Jugadores.getJugar() && !Jugadores.getTurnoMaquina()){
+                bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
+                jugadores[bandera].movimientoJugador("2")
             }
         }
-    }
-
-    private fun revisarGanador(jugador: Int, oponente: Int){
-        if(jugador == 5){
-            declararGanador("JUGADOR")
-        }
-        else if(oponente == 5){
-            declararGanador("MAQUINA")
-        }
-    }
-
-    private fun declararGanador(string: String){
-        val dialogo = Dialog(this)
-        dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialogo.setCancelable(false)
-        dialogo.setCanceledOnTouchOutside(false)
-        dialogo.setContentView(R.layout.winner_dialog)
-        dialogo.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        val botonAfirmativo: Button = dialogo.findViewById(R.id.botonAfirmativo)
-        val botonNegativo: Button = dialogo.findViewById(R.id.botonNegativo)
-        val mensajeGanador: TextView = dialogo.findViewById(R.id.mensajeGanador)
-
-        mensajeGanador.text = string
-
-        botonAfirmativo.setOnClickListener {
-            inicializar()
-            dialogo.dismiss()
-        }
-
-        botonNegativo.setOnClickListener {
-            jugar = false
-            ganadorTexto.text = arrayGanador[3]
-            dialogo.dismiss()
-        }
-
-        dialogo.show()
-    }
-
-    private fun inicializar(){
-        jugar = true
-        puntajeHumano = 0
-        puntajeMaquina = 0
-
-        texto = "JUGADOR: $puntajeHumano"
-        pantallaPuntajeHumano.text = texto
-
-        texto = "MAQUINA: $puntajeMaquina"
-        pantallaPuntajeMaquina.text = texto
-
-        ganadorTexto.text = ""
-
-        imagenHumano.visibility = View.INVISIBLE
-        imagenMaquina.visibility = View.INVISIBLE
     }
 }
