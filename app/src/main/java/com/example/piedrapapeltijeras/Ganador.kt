@@ -52,7 +52,7 @@ class Ganador: Jugadores {
         mensajeGanador.text = string
 
         botonAfirmativo.setOnClickListener {
-            jugadoresJuego[banderaInvertida].inicializarJuego(0)
+            jugadoresJuego[banderaInvertida].inicializarJuego()
             dialogo.dismiss()
         }
 

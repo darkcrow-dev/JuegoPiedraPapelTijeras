@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         Jugadores.setJugar(false)
 
         var bandera = Jugadores.convertirBooleano(Jugadores.getTurno())
-        jugadores[bandera].inicializarJuego(0)
+        jugadores[bandera].inicializarJuego()
 
         botonPiedra.setOnClickListener {
             if(Jugadores.getJugar() && !Jugadores.getTurnoMaquina()){

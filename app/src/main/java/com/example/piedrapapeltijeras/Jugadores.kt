@@ -90,7 +90,7 @@ interface Jugadores {
     fun movimientoJugador(ficha: String){
     }
 
-    fun inicializarJuego(contador: Int) {
+    fun inicializarJuego() {
     }
 
     fun terminarJuego(){

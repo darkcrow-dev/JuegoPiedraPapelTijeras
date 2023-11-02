@@ -29,24 +29,22 @@ class Jugador1(private var imagenesFichas: Array<Int>, private var turnoFicha: A
         }
     }
 
-    override fun inicializarJuego(contador: Int) {
-        if(contador > 1){
-            Jugadores.setTurno(false)
-            Jugadores.setJugar(true)
-            Jugadores.setTurnoMaquina(false)
-            ganadorTexto.text = ""
-            return
+    override fun inicializarJuego() {
+        for(contador in 0 until 2){
+            turnoFicha[contador].setImageResource(R.color.transparent)
+
+            jugadoresJuegoTexto = Jugadores.getJugadoresJuego()
+            Jugadores.setPuntaje(contador, 0)
+            val textoPuntajes = Jugadores.getPuntajes()
+
+            val texto = "${jugadoresJuegoTexto[contador]}: ${textoPuntajes[contador]}"
+            puntajeJugadores[contador].text = texto
         }
 
-        turnoFicha[contador].setImageResource(R.color.transparent)
-
-        jugadoresJuegoTexto = Jugadores.getJugadoresJuego()
-        Jugadores.setPuntaje(contador, 0)
-        val textoPuntajes = Jugadores.getPuntajes()
-
-        val texto = "${jugadoresJuegoTexto[contador]}: ${textoPuntajes[contador]}"
-        puntajeJugadores[contador].text = texto
-        inicializarJuego(contador + 1)
+        Jugadores.setTurno(false)
+        Jugadores.setJugar(true)
+        Jugadores.setTurnoMaquina(false)
+        ganadorTexto.text = ""
     }
 
     override fun terminarJuego() {
